@@ -53,6 +53,7 @@
 		</ul>
 		<ul class="nav pull-right">
 			<li><div class="working-indicator"></div></li>
+			<li><a href="/cms/list"> 返回列表 </a></li>
 			<li><a class="btn btn-success file-title-navbar" href="#"
 				title="Rename document"> </a></li>
 			<li><div class="input-file-title-container"><input type="text"
@@ -78,34 +79,33 @@
 				class="list-group-item"><i class="icon-resize-full"></i>
 				StackEdit Viewer</a> <a href="#" data-toggle="collapse"
 				data-target=".collapse-open-from" class="list-group-item"><i
-				class="icon-hdd"></i> Open from...</a>
+				class="icon-hdd"></i> 打开</a>
 			<div class="sub-menu collapse collapse-open-from clearfix">
 				<ul class="nav">
 					<li><a data-toggle="modal" data-target=".modal-import-url"
-						class="action-reset-input" href="#">Open from URL</a></li>
+						class="action-reset-input" href="#">导入链接</a></li>
 					<li><a data-toggle="modal"
 						data-target=".modal-import-harddrive-markdown"
-						class="action-reset-input" href="#">Import from hard drive</a></li>
+						class="action-reset-input" href="#">本地</a></li>
 					<li><a data-toggle="modal"
 						data-target=".modal-import-harddrive-html"
-						class="action-reset-input" href="#">Convert HTML to Markdown</a></li>
+						class="action-reset-input" href="#">从HTML转成MARKDONW</a></li>
 				</ul>
 			</div>
 
 			<a href="#" data-toggle="collapse" data-target=".collapse-save-as"
-				class="list-group-item"><i class="icon-hdd"></i> Save as...</a>
+				class="list-group-item"><i class="icon-hdd"></i> 保存为</a>
 			<div class="sub-menu collapse collapse-save-as clearfix">
 				<ul class="nav">
-					<li><a class="action-download-md" href="#">Save as
+					<li><a class="action-download-md" href="#">保存为
 							Markdown</a></li>
-					<li><a class="action-download-html" href="#">Save as HTML</a></li>
-					<li><a class="action-download-template" href="#">Save
-							using template</a></li>
-					<li><a class="action-download-pdf" href="#">Save as PDF</a></li>
+					<li><a class="action-download-html" href="#">保存为 HTML</a></li>
+					<li><a class="action-download-template" href="#">保存为 template</a></li>
+					<li><a class="action-download-pdf" href="#">保存为 PDF</a></li>
 				</ul>
 			</div>
 		</div>
-		<div class=dropdown-header>SYNCHRONIZE</div>
+		<!--div class=dropdown-header>SYNCHRONIZE</div>
 		<div class="list-group">
 			<a href="#" data-toggle="collapse"
 				data-target=".collapse-sync-gdrive" class="list-group-item submenu-sync-gdrive"><i
@@ -161,11 +161,12 @@
 			<a href="#" data-toggle="modal" data-target=".modal-manage-sync"
 				class="action-reset-input list-group-item"><i
 				class="icon-refresh"></i> Manage synchronization</a>
-		</div>
-		<div class=dropdown-header>PUBLISH</div>
-		<div class="list-group">
+		</div-->
+		<div class=dropdown-header>发布</div>
+		<a href="#"	class="list-group-item action-publish-ppzc"><i class="icon-share"></i> 发布为 </a>
+		<div class="list-group hide">
 			<a href="#" data-toggle="collapse" data-target=".collapse-publish-on"
-				class="list-group-item"><i class="icon-share"></i> Publish on...</a>
+				class="list-group-item"><i class="icon-share"></i> 发布为 </a>
 			<div class="sub-menu collapse collapse-publish-on clearfix">
 				<ul class="nav">
 				</ul>
@@ -180,10 +181,26 @@
 		<ul class="nav">
 			<li><a href="#" data-toggle="modal"
 				data-target=".modal-settings" class="action-load-settings"><i
-					class="icon-cog"></i> Settings</a></li>
-			<li><a href="#" data-toggle="modal" data-target=".modal-about"><i
-					class="icon-help-circled"></i> About</a></li>
+					class="icon-cog"></i> 设置</a></li>
+			<!--li><a href="#" data-toggle="modal" data-target=".modal-about"><i
+					class="icon-help-circled"></i> About</a></li-->
 		</ul>
+
+		<div class=dropdown-header>历史记录</div>
+		<div class="list-group">
+			<a href="#" data-toggle="collapse" data-target=".collapse-history-on"
+				class="list-group-item"><i class="icon-calendar"></i> 历史记录 </a>
+			<div class="sub-menu collapse collapse-history-on clearfix">
+				<ul class="nav">
+				</ul>
+			</div>
+			<!--a href="#" data-toggle="modal" data-target=".modal-manage-publish"
+				class="action-reset-input list-group-item"><i class="icon-share"></i>
+				Manage publication</a>
+			<a href="#" data-toggle="modal" data-target=".modal-manage-sharing"
+				class="action-reset-input list-group-item"><i class="icon-provider-stackedit"></i>
+				Sharing...</a-->
+		</div>
 
 	</div>
 </div>
@@ -594,11 +611,34 @@
 				<button type="button" class="close" data-dismiss="modal"
 					aria-hidden="true">&times;</button>
 				<h3 class="modal-title">
-					Publish on <span class="publish-provider-name"></span>
+					发布到 <span class="publish-provider-name"></span>
 				</h3>
 			</div>
 			<div class="modal-body">
 				<div class="form-horizontal">
+					<div class="form-group modal-publish-ppzc">
+						<label class="col-lg-4 control-label" for="input-publish-ppzc-username">用户名</label>
+						<div class="col-lg-6">
+							<input type="text" id="input-publish-ppzc-username"
+								placeholder="请输入手机号" class="form-control">
+						</div>
+					</div>
+					<div class="form-group modal-publish-ppzc">
+						<label class="col-lg-4 control-label" for="input-publish-ppzc-password">密码</label>
+						<div class="col-lg-6">
+							<input type="password" id="input-publish-ppzc-password" 
+								class="form-control">
+						</div>
+					</div>
+					<div class="form-group modal-publish-ppzc">
+						<label class="col-lg-4 control-label" for="input-publish-ppzc-path">发布路径</label>
+						<div class="col-lg-6">
+							<input type="text" id="input-publish-ppzc-path" 
+								class="form-control">
+						</div>
+					</div>
+					<!--      add by gaofeng      -->
+
 					<div class="form-group modal-publish-ssh">
 						<label class="col-lg-4 control-label" for="input-publish-ssh-host">Host</label>
 						<div class="col-lg-7">
@@ -773,7 +813,7 @@
 						</div>
 					</div>
 
-					<div class="form-group">
+					<div class="form-group hide">
 						<label class="col-lg-4 control-label">Format</label>
 						<div class="col-lg-7">
 							<div class="radio">

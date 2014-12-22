@@ -1046,7 +1046,6 @@ define([
             document.getElementById('input-settings-theme').innerHTML = themeOptions;
         }
 
-        $('.modal-header').append('<a class="dialog-header-message" href="https://stackedit-beta.herokuapp.com/" target="_blank">Try StackEdit 4 beta!</a>');
     });
 
     return core;

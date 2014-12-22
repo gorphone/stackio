@@ -7,6 +7,7 @@ define([
     "fileSystem",
     "fileMgr",
     "classes/Provider",
+    "providers/ppzucheProvider",
     "providers/dropboxProvider",
     "providers/gdriveProvider",
     "providers/gdrivesecProvider",

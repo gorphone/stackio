@@ -44,6 +44,30 @@ define([
                 storage[this.fileIndex + ".content"] = content;
             }
         });
+        Object.defineProperty(this, 'id', {
+            get: function() {
+                return storage[this.fileIndex + ".id"];
+            },
+            set: function(id) {
+                storage[this.fileIndex + ".id"] = id;
+            }
+        });
+        Object.defineProperty(this, 'path', {
+            get: function() {
+                return storage[this.fileIndex + ".path"];
+            },
+            set: function(path) {
+                storage[this.fileIndex + ".path"] = path;
+            }
+        });
+        Object.defineProperty(this, 'history', {
+            get: function() {
+                return storage[this.fileIndex + ".history"];
+            },
+            set: function(history) {
+                storage[this.fileIndex + ".history"] = history;
+            }
+        });
         Object.defineProperty(this, 'editorScrollTop', {
             get: function() {
                 return this._editorScrollTop;

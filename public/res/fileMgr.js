@@ -167,6 +167,7 @@ define([
 
     eventMgr.addListener("onReady", function() {
         var $editorElt = $("#wmd-input");
+
         fileMgr.selectFile();
 
         var $fileTitleElt = $('.file-title-navbar');
