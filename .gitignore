@@ -3,3 +3,4 @@
 node_modules
 Thumbs.db
 public/res/bower-libs
+public/res-min
