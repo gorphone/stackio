@@ -201,6 +201,15 @@ define([
         }
 
         providerLoad();
+        //2014-12-23 fix the problem of back to list 
+        function refreshHref(){
+            var aBtn = $('#backToList');
+            aBtn.attr({
+                'href': CMS_DOMAIN + '/cms/list',
+            });
+        }
+
+        refreshHref();
 
         $(window).on('hashchange', providerLoad);
        
