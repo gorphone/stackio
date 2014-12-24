@@ -182,22 +182,6 @@ module.exports = function(grunt) {
                 ],
                 pushTo: 'origin'
             }
-        },
-        watch: {
-            scripts: {
-                files: '**/**.js',
-                tasks: 'jshint',
-                options: {
-                    livereload: true,
-                }
-            },
-            css: {
-                files: '**/**.sass',
-                tasks: ['sass'],
-                options: {
-                    livereload: true,
-                }
-            }
         }
     });
 
