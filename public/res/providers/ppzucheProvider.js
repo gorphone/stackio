@@ -11,7 +11,7 @@ define([
     "classes/AsyncTask",
     "eventMgr"
 ], function($, _, utils, storage, constants, fileMgr, settings, fileSystem, Provider, AsyncTask, eventMgr) {
-    
+
     function getDomainFromUrl(url){
         var host;
         var regex = /.*\:\/\/([^\/]*)/;
@@ -142,7 +142,7 @@ define([
             var history = fileDesc.history && JSON.parse( fileDesc.history );
 
             history = history || [];
-           
+
             var historyMenuHtml = _.reduce( history, function( result,  item) {
                 return result + _.template(initPublishButtonTmpl, {
                     id: item.id || 'new',
@@ -178,7 +178,7 @@ define([
                     fileDesc = _.find(fileSystem, function(file) {
                         return file.title === title;
                     });
-                        
+
                     if(!fileDesc){
                         fileDesc = fileMgr.createFile(title, src);
                     }else{
@@ -197,22 +197,22 @@ define([
                 $('.menu-panel').collapse('hide');
             }
 
-            
+
         }
 
         providerLoad();
-        //2014-12-23 fix the problem of back to list 
-        function refreshHref(){
-            var aBtn = $('#backToList');
-            aBtn.attr({
-                'href': CMS_DOMAIN + '/cms/list',
-            });
-        }
+        //2014-12-23 fix the problem of back to list
+        // function refreshHref(){
+        //     var aBtn = $('#backToList');
+        //     aBtn.attr({
+        //         'href': CMS_DOMAIN + '/cms/list',
+        //     });
+        // }
 
-        refreshHref();
+        // refreshHref();
 
         $(window).on('hashchange', providerLoad);
-       
+
     });
 
     // Get the html from the onPreviewFinished callback
