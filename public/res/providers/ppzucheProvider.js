@@ -71,6 +71,9 @@ define([
             password: publishAttributes.password,
             path: publishAttributes.path
         };
+        console.log(data);
+        console.log(CMS_DOMAIN + PPZUCHE_CMS_LINK);
+
         var task = new AsyncTask();
 
         task.onRun(function() {
