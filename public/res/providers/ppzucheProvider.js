@@ -12,19 +12,8 @@ define([
     "eventMgr"
 ], function($, _, utils, storage, constants, fileMgr, settings, fileSystem, Provider, AsyncTask, eventMgr) {
 
-    function getDomainFromUrl(url){
-        var host;
-        var regex = /.*\:\/\/([^\/]*)/;
-        var match = url.match(regex);
-        if( match && match.length ){
-            host = match[0];
-        }
-        return host;
-    }
-
     var PPZUCHE_CMS_LINK = "/cms/pull",
-        PPZUCHE_CMS_SAVE_LINK = "/cms/save",
-        CMS_DOMAIN = getDomainFromUrl(document.referrer) || "http://cp.p2pzc.com";
+        PPZUCHE_CMS_SAVE_LINK = "/cms/save";
 
     var ppzucheProvider = new Provider('ppzc', "pp租车"),
         fileDesc,
@@ -33,7 +22,7 @@ define([
     ppzucheProvider.importPublic = function ( id, callback ){
         var task = new AsyncTask(true);
 
-        var content, url = CMS_DOMAIN + PPZUCHE_CMS_LINK + '?id=' + id;
+        var content, url =  PPZUCHE_CMS_LINK + '?id=' + id;
 
         task.onRun(function() {
             $.getJSON(url + '&callback=?', function(result) {
@@ -71,14 +60,12 @@ define([
             password: publishAttributes.password,
             path: publishAttributes.path
         };
-        console.log(data);
-        console.log(CMS_DOMAIN + PPZUCHE_CMS_LINK);
 
         var task = new AsyncTask();
 
         task.onRun(function() {
             $.ajax({
-                url: CMS_DOMAIN + PPZUCHE_CMS_SAVE_LINK,
+                url: PPZUCHE_CMS_SAVE_LINK,
                 type: "POST",
                 crossDomain: true,
                 data: data,
