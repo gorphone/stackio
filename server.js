@@ -33,7 +33,7 @@ app.use(function(req, res, next) {
 });
 
 // Listen on port 3000
-var port = 8099;
+var port = 1337;
 app.listen(port, null, function() {
     console.log('Server started: http://localhost:' + port);
 });
