@@ -23,8 +23,8 @@ define([
     'ace/requirejs/text!ace/css/editor.css',
     'ace/requirejs/text!ace/theme/textmate.css',
     'ace/ext/spellcheck',
-    'ace/ext/searchbox'
-
+    'ace/ext/searchbox',
+    "libs/resizeImg"
 ], function($, _, crel, ace, constants, utils, storage, settings, eventMgr, shortcutMgr, mousetrap, bodyIndexHTML, bodyViewerHTML, settingsTemplateTooltipHTML, settingsUserCustomExtensionTooltipHTML) {
 
     var core = {};
@@ -855,6 +855,46 @@ define([
         mousetrap.stopCallback = function(e, element) {
             return isMenuPanelShown || isDocumentPanelShown || isModalShown || $(element).is("input, select, textarea:not(.ace_text-input)");
         };
+
+        //压缩图片
+        $('#input-insert-file').resizeImg({
+            width: 1280,
+            quality: 0.8,
+            before: function ( _h,b,f ) {
+                var size = ~~((f.size / 1000) - 200);
+                size = size > 100 ? size : 100;
+                eventMgr.onMessage('上传中,预计压缩文件' + size + 'kb');
+            },
+            success: function (result) {
+                var base64 = result.base64;
+                
+                $.ajax({
+                    type: "POST",
+                    url: '/cms/upload',
+                    data: {
+                        'is_dataurl': true,
+                        'rc_imagedata': base64,
+                        'len': base64.length
+                    },
+                    success: function(res){
+                        res = $.parseJSON(res);
+                        if( +res.status.code ){
+                            eventMgr.onError(res.status.message);
+                            return;
+                        }
+                        var data = res.data;
+                        if( data.url ){
+                            $('#input-insert-image-preview').attr('src', data.url);
+                            $("#input-insert-image").val( data.url );
+                        }
+                    },
+                    error: function(){
+                        eventMgr.onError('系统错误，请稍后再试');
+                    }
+                });
+                // $('#input-insert-image-preview').attr('src', base64);
+            }
+        });
 
         // Click events on "insert link" and "insert image" dialog buttons
         $(".action-insert-link").click(function(e) {

@@ -323,18 +323,22 @@
 				<h3 class="modal-title">Image</h3>
 			</div>
 			<div class="modal-body">
-				<p>Please provide the image URL and an optional title:</p>
+				<p>选择上传的图片:</p>
 				<div class="input-group">
-					<span class="input-group-addon"><i class="icon-picture"></i></span><input
-						id="input-insert-image" type="text" class="col-lg-5 form-control"
-						placeholder='http://example.com/image.jpg "optional title"'></input>
+					<span class="input-group-addon">
+						<i class="icon-picture"></i>
+					</span>
+					<input id="input-insert-file" type="file" class="col-lg-5 form-control" ></input>
+					<input id="input-insert-image" type="hidden" class="col-lg-5 form-control" ></input>
+				</div>
+				<div class="input-group">
+					<img alt="" class="col-lg-12" id="input-insert-image-preview" accept="image/jpeg">
 				</div>
 			</div>
 			<div class="modal-footer">
-				<a href="#" class="btn btn-default action-import-image-gplus"
-					data-dismiss="modal"><i class="icon-provider-gplus"></i> Import
-					from Google+</a> <a href="#" class="btn btn-default"
-					data-dismiss="modal">Cancel</a> <a href="#"
+					<a href="#" class="btn btn-default"
+					data-dismiss="modal">Cancel</a> 
+					<a href="#"
 					class="btn btn-primary action-insert-image" data-dismiss="modal">OK</a>
 			</div>
 		</div>
